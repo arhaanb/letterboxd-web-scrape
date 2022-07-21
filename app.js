@@ -10,29 +10,29 @@ const getLetterboxdData = async (username) => {
 	const htmlData = response.data
 	const $ = cheerio.load(htmlData)
 
-	var data = []
+	var data = {}
 
 	$('.profile-statistic', htmlData).each((index, element) => {
 		const value = $(element).children('a').children('.value').text()
 
 		if (index == 0) {
-			data.push({ title: 'films', value })
+			data.films = value
 		}
 
 		if (index == 1) {
-			data.push({ title: 'this year', value })
+			data.this_year = value
 		}
 
 		if (index == 2) {
-			data.push({ title: 'lists', value })
+			data.lists = value
 		}
 
 		if (index == 3) {
-			data.push({ title: 'following', value })
+			data.following = value
 		}
 
 		if (index == 4) {
-			data.push({ title: 'followers', value })
+			data.followers = value
 		}
 	})
 	// console.log(data)
